@@ -27,6 +27,8 @@ struct EmailComposer<ContentView: View>: ViewModifier {
     var result: ((Result<EmailComposerResult, Error>) -> Void)?
     var deviceCannotSendEmailsView: DeviceCannotSendEmailsView<ContentView>
     
+    @Environment(\.isEnabled) var isEnabled
+    
     func body(content: Content) -> some View {
         content
             .sheet(isPresented: $isPresented, onDismiss: onDismiss) {
